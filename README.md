@@ -75,6 +75,20 @@ Especially on Ubuntu ensure the sdcard is not already mounted in the system, che
 
 ## Common Issues
 
+### does not boot on silicon 1.0-GP / 2.0-HS-SE
+
+AM64 Silicon revisions and secure-boot configurations require different firmware for initialisation.
+Only one bootable disk image is generated, and the default is SR2.0-HS-FS.
+
+The default image does however contain binaries for the non-default configurations.
+After writing bootable image to SD-Card non-default configurations can be activated by renaming files on the first partition:
+
+- `tiboot3-am64x-gp-sr-som.bin` (SR1.0-GP)
+- `tiboot3-am64x_sr2-hs-fs-sr-som.bin` (SR2.0-HS-FS)
+- `tiboot3-am64x_sr2-hs-sr-som.bin` (SR2.0-HS-SE)
+
+to `tiboot3.bin`.
+
 ### make version 4.2.1 is known to have issues
 
 ```
