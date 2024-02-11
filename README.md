@@ -42,9 +42,6 @@ SolidRun BSP supports the following Yocto machines:
 | am64xx-evm    | AM64x EVM - HS-FS, HS-SE                       |
 | am64xx-sr-som | AM642 SoM, AM642 HummingBoard-T - HS-FS, HS-SE |
 
-
-Realtime (`ARAGO_RT_ENABLE=1`) is not supported yet.
-
 ## Install Image to SD-Card
 
 Successful default build generates a bootable sdcard image in `deploy-ti/images/am64xx-sr-som/` folder, e.g.:

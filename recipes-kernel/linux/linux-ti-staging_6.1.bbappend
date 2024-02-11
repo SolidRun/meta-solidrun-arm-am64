@@ -1,5 +1,5 @@
 # Add this layer to SRC_URI search path
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}-6.1:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/linux-ti-staging-6.1:"
 
 # Enable non-default kernel configs required for reference board
 SRC_URI:append = " file://k3-am642-hummingboard-t.cfg"
