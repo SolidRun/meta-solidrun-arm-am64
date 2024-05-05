@@ -14,4 +14,6 @@ SRC_URI += "file://0001-pci-j721e-assert-reset-gpio-before-deassertion-to-en.pat
             file://0006-arm64-dts-ti-k3-am64-main-icssg0_mdio-fix-clock-refe.patch \
             file://0007-arm64-dts-ti-k3-am64-main-icssg1_mdio-fix-clock-refe.patch \
             file://0008-arm64-dts-ti-k3-am64-main-icssg-hack-fix-deferred-pr.patch \
+            file://0009-arm64-dts-ti-k3-am642-hummingboard-t-add-pinctrl-pad.patch \
+            file://0010-arm64-dts-ti-k3-am642-hummingboard-t-fix-rs485-rts-p.patch \
 "
