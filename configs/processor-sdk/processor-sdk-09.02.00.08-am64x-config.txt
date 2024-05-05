@@ -14,3 +14,6 @@ OECORELAYERCONF=./sample-files/bblayers.conf.sample
 meta-edgeai,https://git.ti.com/git/edgeai/meta-edgeai.git,kirkstone,02ce7e60b449c72def00f26afc549034cbd82ba9,layers=
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
+
+# SolidRun BSP
+meta-solidrun-arm-am64,https://github.com/SolidRun/meta-solidrun-arm-am64.git,kirkstone-tisdk-9,HEAD,layers=
