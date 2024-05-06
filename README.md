@@ -33,6 +33,11 @@ Substitute the git clone command for `oe-layersetup.git` / `tisdk`:
  MACHINE=<machine> bitbake -k tisdk-default-image
 ```
 
+For `<oeconfig-file>` SolidRun support:
+
+- `processor-sdk-09.02.00.09-am64x-config.txt`
+- `processor-sdk-09.01.00-config.txt`
+
 ### "1.2.3.2. Build Options"
 
 SolidRun BSP supports the following Yocto machines:
