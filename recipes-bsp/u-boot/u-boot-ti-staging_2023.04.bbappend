@@ -14,6 +14,10 @@ SRC_URI += "file://0001-lib-add-tlv_eeprom-library.patch \
             file://0010-net-phy-ti-dp83869-implement-software-reset.patch \
             file://0011-net-phy-ti-dp83869-fix-rx-tx-delay-value-parsing.patch \
             file://0012-configs-am64som-enable-dp83869-phy-driver.patch \
+            file://0013-board-solidrun-am64som-regenerate-dram-config-with-l.patch \
+            file://0014-board-solidrun-am64som-add-dram-configuration-for-16.patch \
+            file://0015-configs-am64som-disable-unused-features-to-shrink-sp.patch \
+            file://0016-board-solidrun-am64som-support-dram-and-board-detect.patch \
 "
 
 # find board-cfg.yaml in am64 evm
