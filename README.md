@@ -7,6 +7,10 @@ This is a yocto meta layer for adding SolidRun AM64 SoM support to TI Yocto SDK.
 - AM642 SoM (standalone, enough to boot)
 - AM642 SoM on HummingBoard-T
 
+## Binaries
+
+Binaries are generated automatically by our CI infrastructure to [images.solid-run.com](https://images.solid-run.com/AM64X/meta-solidrun-arm-am64/)
+
 ## TI Documentation
 
 - [Yocto SDK user manual](https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/10_01_10_04/exports/docs/devices/AM64X/linux/Overview.html)
