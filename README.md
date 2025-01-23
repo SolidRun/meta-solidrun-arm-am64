@@ -35,8 +35,7 @@ Substitute the git clone command for `oe-layersetup.git` / `tisdk`:
 
 For `<oeconfig-file>` SolidRun support:
 
-- `processor-sdk-09.02.00.09-am64x-config.txt`
-- `processor-sdk-09.01.00-config.txt`
+- `processor-sdk-scarthgap-10.01.10.04-config.txt`
 
 ### "1.2.3.2. Build Options"
 
@@ -50,12 +49,12 @@ SolidRun BSP supports the following Yocto machines:
 ## Install Image to SD-Card
 
 Successful default build generates a bootable sdcard image in `deploy-ti/images/am64xx-sr-som/` folder, e.g.:
-- `deploy-ti/images/am64xx-sr-som/tisdk-default-image-am64xx-sr-som.wic.xz`
-- `deploy-ti/images/am64xx-sr-som/tisdk-default-image-am64xx-sr-som.wic.xz.bmap`
+- `deploy-ti/images/am64xx-sr-som/tisdk-default-image-am64xx-sr-som.rootfs.wic.xz`
+- `deploy-ti/images/am64xx-sr-som/tisdk-default-image-am64xx-sr-som.rootfs.wic.bmap`
 
 ### with bmaptool (recommended)
 
-    sudo bmaptool copy deploy-ti/images/am64xx-sr-som/tisdk-default-image-am64xx-sr-som.wic.xz /dev/sdX
+    sudo bmaptool copy deploy-ti/images/am64xx-sr-som/tisdk-default-image-am64xx-sr-som.rootfs.wic.xz /dev/sdX
 
 Substitute "sdX" with the correct name of sd-card reader.
 Note that device numbering can change, writing to the wrong device **will delete your data**.
@@ -104,7 +103,7 @@ ERROR:  OE-core's config sanity checker detected a potential misconfiguration.
     make version 4.2.1 is known to have issues on Centos/OpenSUSE and other non-Ubuntu systems. Please use a buildtools-make-tarball or a newer version of make.
 ```
 
-Prebuilt buildtools with compatible versions are available for download from the yocto project: [x86_64-buildtools-nativesdk-standalone-4.0.15.sh](https://downloads.yoctoproject.org/releases/yocto/yocto-4.0.15/buildtools/x86_64-buildtools-nativesdk-standalone-4.0.15.sh)
+Prebuilt buildtools with compatible versions are available for download from the yocto project: [x86_64-buildtools-extended-nativesdk-standalone-5.0.5.sh](https://downloads.yoctoproject.org/releases/yocto/yocto-5.0.5/buildtools/x86_64-buildtools-extended-nativesdk-standalone-5.0.5.sh)
 Follow the Yocto Instructions on [Downloading a Pre-Built buildtools Tarball](https://www.rpsys.net/yocto-docs/ref-manual/ref-system-requirements.html#downloading-a-pre-built-buildtools-tarball).
 
 ## Maintainer Notes
