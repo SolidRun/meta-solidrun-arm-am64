@@ -15,3 +15,6 @@ oe-core,https://git.openembedded.org/openembedded-core,scarthgap,dac630ab5ee7aa6
 OECORELAYERCONF=./sample-files/bblayers.conf.sample
 OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
+
+# SolidRun BSP
+meta-solidrun-arm-am64,https://github.com/SolidRun/meta-solidrun-arm-am64.git,scarthgap-tisdk-10,HEAD,layers=
