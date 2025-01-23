@@ -808,21 +808,21 @@ EOM
     # First copy the template file
     cp -f "$OECORELOCALCONFPATH" "$confdir/local.conf"
 
-    # Find if old DL_DIR was set
-    if [ -e "$confdir/local.conf.bak" ]
-    then
-        old_dldir=$(grep -e "^DL_DIR =" "$confdir/local.conf.bak" | sed 's|DL_DIR = ||' | sed 's/"//g')
-    else
-        old_dldir="$oebase/downloads"
-    fi
-
     # If command line option was not set use the old dldir
     if [ -z "$dldir" ]
     then
-        dldir=$old_dldir
+        if [ -e "$confdir/local.conf.bak" ]
+        then
+            dldir=$(grep -e "^DL_DIR =" "$confdir/local.conf.bak" | sed 's|DL_DIR = ||' | sed 's/"//g')
+            printf '%s\n' "WARNING: Loading old DL_DIR from $confdir/local.conf" \
+                          "DL_DIR = $dldir";
+        fi
     fi
 
-    sed -i "s|^DL_DIR.*|DL_DIR = \"${dldir}\"|" "$confdir/local.conf"
+    if [ -n "$dldir" ]
+    then
+        sed -i "s|^DL_DIR.*|DL_DIR = \"${dldir}\"|" "$confdir/local.conf"
+    fi
 
     if [ -e "$oebase/tmp_append_local.conf" ]
     then
