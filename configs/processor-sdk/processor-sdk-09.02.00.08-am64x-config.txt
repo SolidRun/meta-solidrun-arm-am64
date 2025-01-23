@@ -17,4 +17,4 @@ OECORELOCALCONF=./sample-files/local-arago64-v2.conf.sample
 BITBAKE_INCLUSIVE_VARS=yes
 
 # SolidRun BSP
-meta-solidrun-arm-am64,https://github.com/SolidRun/meta-solidrun-arm-am64.git,kirkstone-tisdk-9,HEAD,layers=
+meta-solidrun-arm-am64,https://github.com/SolidRun/meta-solidrun-arm-am64.git,kirkstone-tisdk-9,cb87026169734c5183f7d63901fd31f32d447937,layers=
