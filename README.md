@@ -106,6 +106,39 @@ ERROR:  OE-core's config sanity checker detected a potential misconfiguration.
 Prebuilt buildtools with compatible versions are available for download from the yocto project: [x86_64-buildtools-extended-nativesdk-standalone-5.0.5.sh](https://downloads.yoctoproject.org/releases/yocto/yocto-5.0.5/buildtools/x86_64-buildtools-extended-nativesdk-standalone-5.0.5.sh)
 Follow the Yocto Instructions on [Downloading a Pre-Built buildtools Tarball](https://www.rpsys.net/yocto-docs/ref-manual/ref-system-requirements.html#downloading-a-pre-built-buildtools-tarball).
 
+### compiler-rt_git.bb:do_configure fails with `aarch64-oe-linux-clang: error: unsupported argument 'standard' to option '-mbranch-protection='`
+
+Recipe `compiler-rt` step `do_configure` fails with an obscure argument error for clang:
+
+```
+|     /opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work/cortexa53-crypto-oe-linux/compiler-rt/18.1.6/recipe-sysroot-native/usr/bin/aarch64-oe-linux/aarch64-oe-linux-clang --target=aarch64-oe-linux --sysroot=/opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work/cortexa53-crypto-oe-linux/compiler-rt/18.1.6/recipe-sysroot   -target aarch64-oe-linux  -mcpu=cortex-a53+crc+crypto -mbranch-protection=standard+crc+crypto  -mlittle-endian --dyld-prefix=/usr -Qunused-arguments  --sysroot=/opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work/cortexa53-crypto-oe-linux/compiler-rt/18.1.6/recipe-sysroot  -O2 -pipe -g -feliminate-unused-debug-types   -fmacro-prefix-map=/opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work-shared/llvm-project-source-18.1.6-r0/llvm-project-18.1.6.src=/usr/src/debug/compiler-rt/18.1.6  -fdebug-prefix-map=/opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work-shared/llvm-project-source-18.1.6-r0/llvm-project-18.1.6.src=/usr/src/debug/compiler-rt/18.1.6  -fmacro-prefix-map=/opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work/cortexa53-crypto-oe-linux/compiler-rt/18.1.6/build=/usr/src/debug/compiler-rt/18.1.6  -fdebug-prefix-map=/opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work/cortexa53-crypto-oe-linux/compiler-rt/18.1.6/build=/usr/src/debug/compiler-rt/18.1.6  -fdebug-prefix-map=/opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work/cortexa53-crypto-oe-linux/compiler-rt/18.1.6/recipe-sysroot=  -fmacro-prefix-map=/opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work/cortexa53-crypto-oe-linux/compiler-rt/18.1.6/recipe-sysroot=  -fdebug-prefix-map=/opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work/cortexa53-crypto-oe-linux/compiler-rt/18.1.6/recipe-sysroot-native=   -fPIE -MD -MT CMakeFiles/cmTC_11865.dir/testCCompiler.c.o -MF CMakeFiles/cmTC_11865.dir/testCCompiler.c.o.d -o CMakeFiles/cmTC_11865.dir/testCCompiler.c.o -c /opt/workspace/YOCTO/tisdk/build/arago-tmp-default-glibc/work/cortexa53-crypto-oe-linux/compiler-rt/18.1.6/build/CMakeFiles/CMakeScratch/TryCompile-Ey69Yh/testCCompiler.c
+|     aarch64-oe-linux-clang: error: unsupported argument 'standard' to option '-mbranch-protection='
+|     ninja: build stopped: subcommand failed.
+
+...
+
+ERROR: Task (/opt/workspace/YOCTO/tisdk/sources/meta-clang/recipes-devtools/clang/compiler-rt_git.bb:do_configure) failed with exit code '1'
+```
+
+This error occurs for targets `tisdk-default-image` and `tisdk-thinlinux-image` but not `tisdk-base-image`.
+As a workaround tuning for Cortex-A53 can be disabled in `conf/machine/am64xx-sr-som.conf`:
+
+```
+diff --git a/conf/machine/am64xx-sr-som.conf b/conf/machine/am64xx-sr-som.conf
+index 3fedaac..89f3ead 100644
+--- a/conf/machine/am64xx-sr-som.conf
++++ b/conf/machine/am64xx-sr-som.conf
+@@ -4,8 +4,6 @@
+ #@DESCRIPTION: Machine configuration for SolidRun AM64 SoM
+ #@MAINTAINER: Josua Mayer <josua@solid-run.com>
+
+-DEFAULTTUNE ?= "cortexa53-crypto"
+-require conf/machine/include/arm/armv8a/tune-cortexa53.inc
+ require conf/machine/include/am64xx.inc
+
+ KERNEL_DEVICETREE = " \
+```
+
 ## Maintainer Notes
 
 ### When updating to new TI SDK:
