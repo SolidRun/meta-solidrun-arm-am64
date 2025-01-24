@@ -9,13 +9,13 @@ This is a yocto meta layer for adding SolidRun AM64 SoM support to TI Yocto SDK.
 
 ## TI Documentation
 
-- [Yocto SDK user manual](https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/09_01_00_08/exports/docs/devices/AM64X/linux/Overview.html)
-- [Yocto Build Instructions](https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/09_01_00_08/exports/docs/linux/Overview_Building_the_SDK.html)
-- [Yocto Software Manifest](https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-yXgchBCk98/09.01.00.08/software_manifest_64_non_rt.htm)
+- [Yocto SDK user manual](https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/10_01_10_04/exports/docs/devices/AM64X/linux/Overview.html)
+- [Yocto Build Instructions](https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/10_01_10_04/exports/docs/linux/Overview_Building_the_SDK.html)
+- [Yocto Software Manifest](https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-yXgchBCk98/10.01.10.04/software_manifest_am64xx-evm.htm)
 
 ## Compile base image
 
-Please refer to TI's [Yocto SDK user manual](https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/09_01_00_08/exports/docs/devices/AM64X/linux/Overview.html) for build instructions.
+Please refer to TI's [Yocto SDK user manual](https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/10_01_10_04/exports/docs/devices/AM64X/linux/Overview.html) for build instructions.
 
 To support SolidRun AM64 SoM substitute some of TI's instructions according to the information below:
 
